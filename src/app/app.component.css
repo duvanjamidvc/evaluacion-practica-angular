@@ -1,3 +1,9 @@
 * [lang^=en] {
-  color: green;
+  color: aquamarine;
+}
+
+
+.contact {
+  font-size: 0.8rem;
+  text-align: center;
 }

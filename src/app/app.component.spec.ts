@@ -1,11 +1,13 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { PlantasModule } from './modules/plantas/plantas.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule, PlantasModule],
       declarations: [AppComponent],
     }).compileComponents();
   });
@@ -16,18 +18,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'base-project'`, () => {
+  it(`should have as title 'Vivero el otoño'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('base-project');
+    expect(app.title).toEqual('Vivero el otoño');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'base-project app is running!'
-    );
+    expect(compiled.querySelector('h2')?.textContent)
+      .toEqual(fixture.componentInstance.title);
   });
 });
